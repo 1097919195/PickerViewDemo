@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title="@string/app_name">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <include layout="@layout/item_slide" />
+    <Button
+        android:gravity="center"
+        android:textSize="25dp"
+        android:id="@+id/btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="界面跳转"/>
+
+
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="列表"
+        android:autoLink="all"
+        android:textSize="25sp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>

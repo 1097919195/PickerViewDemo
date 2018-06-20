@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_news"
+        android:icon="@drawable/zone_friend_add"
+        android:title="张三" />
+    <item
+        android:id="@+id/nav_photo"
+        android:icon="@drawable/zone_friend_add"
+        android:title="李四" />
+    <item
+        android:id="@+id/nav_video"
+        android:icon="@drawable/zone_friend_add"
+        android:title="王五" />
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/zone_friend_add"
+        android:title="赵六" />
+
+</menu>

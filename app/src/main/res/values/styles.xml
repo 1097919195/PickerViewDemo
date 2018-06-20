@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:actionOverflowButtonStyle">@style/OverflowStyle</item>//修改toolbar菜单那三个点的样子
+    </style>
+
+    <style name="OverflowStyle">
+        <item name="android:src">@drawable/about</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Welcome" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/>
+    <style name="AppWelcome" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/zone</item>
+    </style>
+
+</resources>

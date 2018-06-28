@@ -39,6 +39,8 @@ public class MainActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.btn)
     Button btn;
+    @BindView(R.id.wheel)
+    Button wheelBtn;
     CommonRecycleViewAdapter<DemoBean> adapter;
     DemoBean bean1 = new DemoBean();
     DemoBean bean2 = new DemoBean();
@@ -66,8 +68,14 @@ public class MainActivity extends BaseActivity {
 
     private void initListener() {
         btn.setOnClickListener(v -> {
-            Intent intent = new Intent(this,TestActivity.class);
+            Intent intent = new Intent();
+            intent.setAction("com.example.smyh006intent01.MY_ACTION");
+//            intent.addCategory("com.MY_CATEGORY");
             startActivity(intent);
+        });
+
+        wheelBtn.setOnClickListener(v -> {
+            ToastUtil.showShort("点击");
         });
     }
 
@@ -97,6 +105,7 @@ public class MainActivity extends BaseActivity {
                     public void onOpen(SlideDelete slideDelete) {
                         closeOtherItem();
                         slideDeleteArrayList.add(slideDelete);
+                        slideDelete.isShowDelete(true);
                         Log.d("Slide", "slideDeleteArrayList当前数量：" + slideDeleteArrayList.size());
                     }
                     @Override

@@ -19,15 +19,18 @@
 
     </android.support.v7.widget.Toolbar>
 
-
-    <include layout="@layout/item_slide" />
+    <Button
+        android:id="@+id/wheel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="wheelView"/>
     <Button
         android:gravity="center"
         android:textSize="25dp"
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="界面跳转"/>
+        android:text="界面跳转可选"/>
 
 
     <TextView

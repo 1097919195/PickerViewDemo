@@ -20,7 +20,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".activity.TestActivity"
+            >
+            <intent-filter >
+                <action android:name="com.example.smyh006intent01.MY_ACTION" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.TestTwoActivity"
+            >
+            <intent-filter>
+                <action android:name="com.example.smyh006intent01.MY_ACTION" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.MY_CATEGORY" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

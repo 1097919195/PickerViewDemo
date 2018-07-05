@@ -75,7 +75,8 @@ public class MainActivity extends BaseActivity {
         });
 
         wheelBtn.setOnClickListener(v -> {
-            ToastUtil.showShort("点击");
+            Intent intent = new Intent(MainActivity.this,WheelActivity.class);
+            startActivity(intent);
         });
     }
 

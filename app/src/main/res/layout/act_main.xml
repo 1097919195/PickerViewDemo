@@ -21,9 +21,10 @@
 
     <Button
         android:id="@+id/wheel"
+        android:textSize="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="wheelView"/>
+        android:text="滚轮实现"/>
     <Button
         android:gravity="center"
         android:textSize="25dp"

@@ -35,6 +35,9 @@
                 <category android:name="com.MY_CATEGORY" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.WheelActivity" />
+
     </application>
 
 </manifest>

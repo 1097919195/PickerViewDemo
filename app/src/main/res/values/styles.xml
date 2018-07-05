@@ -20,7 +20,7 @@
 
     <style name="Welcome" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/>
     <style name="AppWelcome" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/zone</item>
+        <item name="android:windowBackground">@drawable/dog</item>
     </style>
 
 </resources>

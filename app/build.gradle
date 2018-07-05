@@ -49,4 +49,7 @@ dependencies {
     compile 'com.afollestad.material-dialogs:commons:0.9.4.5'
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    compile 'com.contrarywind:wheelview:4.0.6'
+    compile 'com.contrarywind:Android-PickerView:4.1.4'
 }

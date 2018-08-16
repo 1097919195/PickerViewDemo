@@ -32,6 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="界面跳转可选"/>
+    <Button
+        android:gravity="center"
+        android:textSize="25dp"
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义View"/>
 
 
     <TextView

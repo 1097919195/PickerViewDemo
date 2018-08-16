@@ -39,6 +39,8 @@ public class MainActivity extends BaseActivity {
     RecyclerView recyclerView;
     @BindView(R.id.btn)
     Button btn;
+    @BindView(R.id.view)
+    Button view;
     @BindView(R.id.wheel)
     Button wheelBtn;
     CommonRecycleViewAdapter<DemoBean> adapter;
@@ -76,6 +78,11 @@ public class MainActivity extends BaseActivity {
 
         wheelBtn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this,WheelActivity.class);
+            startActivity(intent);
+        });
+
+        view.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,ViewActivity.class);
             startActivity(intent);
         });
     }

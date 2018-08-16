@@ -38,6 +38,8 @@
 
         <activity android:name=".activity.WheelActivity" />
 
+        <activity android:name=".activity.ViewActivity" />
+
     </application>
 
 </manifest>

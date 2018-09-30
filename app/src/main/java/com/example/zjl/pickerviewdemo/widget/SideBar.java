@@ -50,10 +50,10 @@ public class SideBar extends View {
 		// 获取焦点改变背景颜色.
 		int height = getHeight();// 获取对应高度
 		int width = getWidth(); // 获取对应宽度
-		
-		
-		float singleHeight = (height * 1f) / b.length;// 获取每一个字母的高度
-		singleHeight = (height * 1f - singleHeight/2) / b.length;
+
+
+		float singleHeight = (height * 1f) / b.length;// 获取每一个字母的高度(一个字母可触摸的位置高度)
+		singleHeight = (height * 1f - singleHeight/2) / b.length;// 字母真正显示再栏里的高度
 		for (int i = 0; i < b.length; i++) {
 			paint.setColor(Color.rgb(23, 122, 216));
 			// paint.setColor(Color.WHITE);
@@ -63,13 +63,13 @@ public class SideBar extends View {
 			// 选中的状态
 			if (i == choose) {
 				paint.setColor(Color.parseColor("#c60000"));
-				paint.setFakeBoldText(true);
+				paint.setFakeBoldText(true);//模拟实现粗体文字，设置在小字体上效果会非常差
 			}
 			// x坐标等于中间-字符串宽度的一半.
 			float xPos = width / 2 - paint.measureText(b[i]) / 2;
 			float yPos = singleHeight * i + singleHeight;
-			canvas.drawText(b[i], xPos, yPos, paint);
-			paint.reset();// 重置画笔
+			canvas.drawText(b[i], xPos, yPos, paint);//渲染文本
+			paint.reset();// 重置画笔（把更改过的参数还原为默认的）
 		}
 
 	}
@@ -83,40 +83,40 @@ public class SideBar extends View {
 		final int c = (int) (y / getHeight() * b.length);// 点击y坐标所占总高度的比例*b数组的长度就等于点击b中的个数.
 
 		switch (action) {
-		case MotionEvent.ACTION_UP:
-			setBackgroundDrawable(new ColorDrawable(0x00000000));
-			choose = -1;//
-			invalidate();
-			if (mTextDialog != null) {
-				mTextDialog.setVisibility(View.INVISIBLE);
-			}
-			break;
-
-		default:
-			setBackgroundResource(R.drawable.sidebar_background);
-			if (oldChoose != c) {
-				if (c >= 0 && c < b.length) {
-					if (listener != null) {
-						listener.onTouchingLetterChanged(b[c]);
-					}
-					if (mTextDialog != null) {
-						mTextDialog.setText(b[c]);
-						mTextDialog.setVisibility(View.VISIBLE);
-					}
-
-					choose = c;
-					invalidate();
+			case MotionEvent.ACTION_UP:
+				setBackgroundDrawable(new ColorDrawable(0x00000000));
+				choose = -1;//
+				invalidate();
+				if (mTextDialog != null) {
+					mTextDialog.setVisibility(View.INVISIBLE);
 				}
-			}
+				break;
 
-			break;
+			default:
+				setBackgroundResource(R.drawable.sidebar_background);
+				if (oldChoose != c) {
+					if (c >= 0 && c < b.length) {
+						if (listener != null) {
+							listener.onTouchingLetterChanged(b[c]);
+						}
+						if (mTextDialog != null) {
+							mTextDialog.setText(b[c]);
+							mTextDialog.setVisibility(View.VISIBLE);
+						}
+
+						choose = c;
+						invalidate();
+					}
+				}
+
+				break;
 		}
 		return true;
 	}
 
 	/**
 	 * 向外公开的方法
-	 * 
+	 *
 	 * @param onTouchingLetterChangedListener
 	 */
 	public void setOnTouchingLetterChangedListener(OnTouchingLetterChangedListener onTouchingLetterChangedListener) {
@@ -125,12 +125,11 @@ public class SideBar extends View {
 
 	/**
 	 * 接口
-	 * 
+	 *
 	 * @author coder
-	 * 
+	 *
 	 */
 	public interface OnTouchingLetterChangedListener {
 		public void onTouchingLetterChanged(String s);
 	}
-
 }

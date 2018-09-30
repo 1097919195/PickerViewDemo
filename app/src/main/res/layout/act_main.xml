@@ -39,18 +39,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="自定义View"/>
-
-
-    <TextView
+    <Button
         android:gravity="center"
-        android:layout_marginTop="50dp"
+        android:textSize="25dp"
+        android:id="@+id/badgeAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="列表"
+        android:text="设置消息"/>
+    <Button
+        android:gravity="center"
+        android:textSize="25dp"
+        android:id="@+id/badgeClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="清除消息"/>
+
+    <Button
+        android:id="@+id/webViewBtn"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="WEBVIEW"
         android:autoLink="all"
         android:textSize="25sp"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcv"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>

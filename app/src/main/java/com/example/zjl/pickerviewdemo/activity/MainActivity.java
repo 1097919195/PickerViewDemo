@@ -28,6 +28,9 @@ import java.util.List;
 import java.util.ListIterator;
 
 import butterknife.BindView;
+import me.leolin.shortcutbadger.ShortcutBadger;
+import q.rorbin.badgeview.Badge;
+import q.rorbin.badgeview.QBadgeView;
 
 import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_FLING;
 import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL;
@@ -43,6 +46,10 @@ public class MainActivity extends BaseActivity {
     Button view;
     @BindView(R.id.wheel)
     Button wheelBtn;
+    @BindView(R.id.badgeAdd)
+    Button badgeAdd;
+    @BindView(R.id.badgeClear)
+    Button badgeClear;
     CommonRecycleViewAdapter<DemoBean> adapter;
     DemoBean bean1 = new DemoBean();
     DemoBean bean2 = new DemoBean();
@@ -77,12 +84,34 @@ public class MainActivity extends BaseActivity {
         });
 
         wheelBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,WheelActivity.class);
+            Intent intent = new Intent(MainActivity.this, WheelActivity.class);
             startActivity(intent);
         });
 
         view.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,ViewActivity.class);
+            Intent intent = new Intent(MainActivity.this, ViewActivity.class);
+            startActivity(intent);
+        });
+
+        Badge badge = new QBadgeView(mContext).bindTarget(badgeAdd);
+        //中兴没有显示，华为的可以成功
+        badgeAdd.setOnClickListener(v -> {
+            //设置App图标上的消息数量
+            int badgeCount = 10;
+            ShortcutBadger.applyCount(mContext, badgeCount); //for 1.1.4+
+
+            //设置控件上的消息数量
+            badge.setBadgeNumber(10);
+        });
+
+        badgeClear.setOnClickListener(v -> {
+            ShortcutBadger.removeCount(mContext); //for 1.1.4+
+
+            badge.setBadgeNumber(0);
+        });
+
+        findViewById(R.id.webViewBtn).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
             startActivity(intent);
         });
     }
@@ -94,7 +123,7 @@ public class MainActivity extends BaseActivity {
         beanList.add(bean1);
         beanList.add(bean2);
         beanList.add(bean3);
-        adapter = new CommonRecycleViewAdapter<DemoBean>(mContext,R.layout.item_slide,beanList) {
+        adapter = new CommonRecycleViewAdapter<DemoBean>(mContext, R.layout.item_slide, beanList) {
             @Override
             public void convert(ViewHolderHelper helper, DemoBean demoBean) {
                 TextView title = helper.getView(R.id.mTvContent);
@@ -102,13 +131,13 @@ public class MainActivity extends BaseActivity {
                 SlideDelete slideDelete = helper.getView(R.id.slideDelete);
 
                 title.setText(demoBean.getTitel());
-                delete.setOnClickListener(v->{
+                delete.setOnClickListener(v -> {
                     ToastUtil.showShort(String.valueOf(helper.getLayoutPosition()));
                     beanList.remove(helper.getLayoutPosition());
                     adapter.notifyDataSetChanged();
                 });
 
-                slideDelete.setOnSlideDeleteListener(new SlideDelete.OnSlideDeleteListener(){
+                slideDelete.setOnSlideDeleteListener(new SlideDelete.OnSlideDeleteListener() {
                     @Override
                     public void onOpen(SlideDelete slideDelete) {
                         closeOtherItem();
@@ -116,6 +145,7 @@ public class MainActivity extends BaseActivity {
                         slideDelete.isShowDelete(true);
                         Log.d("Slide", "slideDeleteArrayList当前数量：" + slideDeleteArrayList.size());
                     }
+
                     @Override
                     public void onClose(SlideDelete slideDelete) {
                         slideDeleteArrayList.remove(slideDelete);
@@ -138,10 +168,10 @@ public class MainActivity extends BaseActivity {
 //        });
     }
 
-    private void closeOtherItem(){
+    private void closeOtherItem() {
         // 采用Iterator的原因是for是线程不安全的，迭代器是线程安全的
         ListIterator<SlideDelete> slideDeleteListIterator = slideDeleteArrayList.listIterator();
-        while(slideDeleteListIterator.hasNext()){
+        while (slideDeleteListIterator.hasNext()) {
             SlideDelete slideDelete = slideDeleteListIterator.next();
             slideDelete.isShowDelete(false);
         }

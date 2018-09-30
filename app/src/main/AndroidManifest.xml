@@ -40,6 +40,8 @@
 
         <activity android:name=".activity.ViewActivity" />
 
+        <activity android:name=".activity.WebViewActivity" />
+
     </application>
 
 </manifest>

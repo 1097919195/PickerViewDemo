@@ -26,8 +26,8 @@ public class TestActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        dialog = findViewById(R.id.dialog);
-        sideBar = findViewById(R.id.sideBar);
+        dialog = (TextView) findViewById(R.id.dialog);
+        sideBar = (SideBar) findViewById(R.id.sideBar);
         sideBar.setTextView(dialog);
         //设置右侧[A-Z]快速导航栏触摸监听
         sideBar.setOnTouchingLetterChangedListener(new SideBar.OnTouchingLetterChangedListener() {
